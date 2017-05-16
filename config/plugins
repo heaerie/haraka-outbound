@@ -33,7 +33,7 @@ helo.checks
 #
 # AUTH plugins require TLS before AUTH is advertised, see
 #     https://github.com/haraka/Haraka/wiki/Require-SSL-TLS
-# auth/flat_file
+auth/flat_file
 # auth/auth_proxy
 # auth/auth_ldap
 
@@ -58,10 +58,10 @@ data.headers
 #attachment
 #clamd
 #spamassassin
-#dkim_sign
+dkim_sign
 #karma
 #limit
-
+heaerieMailService
 # QUEUE
 # queues: discard  qmail-queue  quarantine  smtp_forward  smtp_proxy
 # Queue mail via smtp - see config/smtp_forward.ini for where your mail goes

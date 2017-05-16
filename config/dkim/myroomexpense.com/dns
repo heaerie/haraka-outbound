@@ -1,0 +1,32 @@
+
+Add this TXT record to the myroomexpense.com DNS zone.
+
+mar2017._domainkey    IN   TXT   v=DKIM1;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwLo7Uhb3XqFjWQyE68H3JZGBvbaYWoBu1DDTEserPha/MZWPBbMlYIcXYgd4LGw6CP+qevD2q7K/mIoC+6AUrPZt0UHCCEpGxTrfaVzlbPXeFu01+13662MYUcGj3Qv9QWO4Q4wGsc3AsKbT5ZQ5e/gSLPmCK4OFPZVR+/NdYOg+d7zKK3ipHYHe01xunsRmTu/VbYo6FcO5OPESSXtmtdHN+KPYYzhgKlO+tT6w/uC4U5CwNBUabMAIHOkRBASAICQ3wiOYuxCdaUCLzo3YkpKCRe61+LArCoRr/e2gzudupg77mXrUdZt1o/CcOiC4Un7NwCy5FakXU/oddfphbQIDAQAB
+
+
+BIND zone file formatted:
+
+mar2017._domainkey    IN   TXT (
+	"v=DKIM1;p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwLo7Uhb3XqFjWQyE68H3JZGBvbaYWoBu1DDTEserPha/MZWPBbMlYIcX"
+	"Ygd4LGw6CP+qevD2q7K/mIoC+6AUrPZt0UHCCEpGxTrfaVzlbPXeFu01+13662MYUcGj3Qv9QWO4Q4wGsc3AsKbT5ZQ5e/gSLPmCK4OFPZVR+/"
+	"NdYOg+d7zKK3ipHYHe01xunsRmTu/VbYo6FcO5OPESSXtmtdHN+KPYYzhgKlO+tT6w/uC4U5CwNBUabMAIHOkRBASAICQ3wiOYuxCdaUCLzo3Y"
+	"kpKCRe61+LArCoRr/e2gzudupg77mXrUdZt1o/CcOiC4Un7NwCy5FakXU/oddfphbQIDAQAB"
+        )
+
+Tell the world that the ONLY mail servers that send mail from this domain are DKIM signed and/or bear our MX and A records.
+
+With SPF:
+
+        SPF "v=spf1 mx a -all"
+        TXT "v=spf1 mx a -all"
+
+With DMARC:
+
+_dmarc  TXT "v=DMARC1; p=reject; adkim=s; aspf=r; rua=mailto:dmarc-feedback@myroomexpense.com; ruf=mailto:dmarc-feedback@myroomexpense.com; pct=100"
+
+For more information about DKIM and SPF policy, the documentation within each plugin contains a longer discussion and links to more detailed information:
+
+   haraka -h dkim_sign
+   haraka -h spf
+
+
